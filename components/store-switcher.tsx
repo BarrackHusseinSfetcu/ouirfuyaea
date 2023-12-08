@@ -1,4 +1,4 @@
-"useclient";
+"use client";
 
 import { store } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
@@ -50,7 +50,7 @@ export default function StoreSwitcher({
                 aria-label={cn("w-[200px] justify-between", className)}
                 >
                     <StoreIcon className="mr-2 h-4 w-4" />
-                    Current Store
+                    {currentStore?.label}
                     <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50"/>
                 </Button>
             </PopoverTrigger>
@@ -67,7 +67,7 @@ export default function StoreSwitcher({
                                     className="text-sm"
                                 >
                                     <StoreIcon className="mr-2 h-4 w-4" />
-                                    {currentStore?.label}
+                                    {store?.label}
                                     <Check 
                                         className={cn(
                                             "ml-auto h-4 w-4",
@@ -86,8 +86,8 @@ export default function StoreSwitcher({
                         <CommandGroup>
                             <CommandItem
                                 onSelect={() => {
-                                    setOpen(false)
-                                    storeModal.onOpen()
+                                    setOpen(false);
+                                    storeModal.onOpen();
                                 }}
                             >
                                 <PlusCircle className = "mr-2 h-5 w-5"/>
